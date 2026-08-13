@@ -14,6 +14,19 @@
     <name>barstory-backend</name>
     <description>barstory-backend</description>
     <url/>
+    <repositories>
+        <!-- 配置阿里云 Maven 镜像，加速国内依赖下载 -->
+        <repository>
+            <id>aliyunmaven</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
     <licenses>
         <license/>
     </licenses>
@@ -35,16 +48,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- 数据访问（二选一） -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
         <!-- 或 MyBatis -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>3.0.3</version>
+            <version>4.0.1</version>
         </dependency>
         <!-- Security + OAuth2 -->
         <dependency>

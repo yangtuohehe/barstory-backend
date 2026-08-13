@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 必须是你的 Mapper 接口的全限定名 -->
+<mapper namespace="com.example.barstorybackend.mapper.UserMapper">
+
+    <!-- resultType 指明返回结果对应的实体类全路径 -->
+    <select id="findBySsoUserId" resultType="com.example.barstorybackend.entity.User">
+        SELECT * FROM barstory_user WHERE sso_user_id = #{ssoUserId}
+    </select>
+
+    <select id="findById" resultType="com.example.barstorybackend.entity.User">
+        SELECT * FROM barstory_user WHERE id = #{id}
+    </select>
+
+    <!-- useGeneratedKeys 和 keyProperty 用于在插入后将自动生成的 ID 赋值回 User 对象 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO barstory_user(sso_user_id, username, email, role, is_active, created_at, updated_at, last_login_at)
+        VALUES(#{ssoUserId}, #{username}, #{email}, #{role}, #{isActive}, #{createdAt}, #{updatedAt}, #{lastLoginAt})
+    </insert>
+
+    <update id="update">
+        UPDATE barstory_user
+        SET username=#{username}, email=#{email}, updated_at=#{updatedAt}, last_login_at=#{lastLoginAt}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM barstory_user WHERE id = #{id}
+    </delete>
+
+</mapper>
